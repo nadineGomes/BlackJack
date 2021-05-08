@@ -18,10 +18,13 @@ namespace BlackJack
             btn_reiniciar.Enabled = false;
             btn_jogar_2.Enabled = false;
             btn_parar_2.Enabled = false;
+            btn_parar_3.Enabled = false;
+            btn_jogar_3.Enabled = false;
         }
 
         int pontos_A = 0;
         int pontos_B = 0;
+        int pontos_C = 0;
 
         public void resultado()
         {
@@ -39,13 +42,16 @@ namespace BlackJack
 
 
             if (pontos_A > pontos_B && pontos_A <= 21)
-                lbl_Resultado.Text = "Jogador 1 GANHOU!";
+                lbl_Resultado.Text = "1 GANHOU!";
             else
                 if (pontos_A < pontos_B && pontos_B <= 21)
-                lbl_Resultado.Text = "Jogador 2 GANHOU!";
+                lbl_Resultado.Text = "2 GANHOU!";
             else
                     if (pontos_A <= 21 && pontos_B <= 21)
                 lbl_Resultado.Text = "EMPATE";
+            else
+                if (pontos_B > pontos_C && pontos_A <= 21)
+                lbl_Resultado.Text = "SEM VENCEDOR.";
             else
                 lbl_Resultado.Text = "SEM VENCEDOR.";
 
@@ -141,7 +147,7 @@ namespace BlackJack
                 lbl_Pontos_B.Text = Convert.ToString(pontos_B);
                 if (pontos_B == 21)
                 {
-                    //lbl_Resultado.Text = "GANHOU!!!";
+                    //lbl_Resultado.Text = "";
                     btn_jogar_2.Enabled = false;
                     btn_reiniciar.Enabled = true;
                     resultado();
@@ -176,7 +182,70 @@ namespace BlackJack
             btn_jogar_2.Enabled = false;
             btn_parar_2.Enabled = false;
             btn_reiniciar.Enabled = true;
+            
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            private void btn_jogar_2_Click(object sender, EventArgs e)
+            {
+                //  ESCOLHER AS CARTAS
+                Jogada(pictureBox2, 2);
+
+                if (pontos_B <= 21)
+                {   // JOGANDO
+                    lbl_Pontos_B.Text = Convert.ToString(pontos_B);
+                    if (pontos_B == 21)
+                    {
+                        //lbl_Resultado.Text = "";
+                        btn_jogar_2.Enabled = false;
+                        btn_reiniciar.Enabled = true;
+                        resultado();
+                    }
+                }
+                else
+                {   // PARTIDA PERDIDA
+                    lbl_Pontos_B.Text = Convert.ToString(pontos_B);
+                    //lbl_Resultado.Text = "PERDEU!!!! ";
+
+                    btn_jogar_2.Enabled = false;
+                    btn_parar_2.Enabled = false;
+
+                    btn_jogar_2.Enabled = false;
+                    btn_parar_2.Enabled = false;
+
+                    resultado();
+                    btn_reiniciar.Enabled = true;
+                }
+            }
+        }
+
+        private void btn_parar_3_Click(object sender, EventArgs e)
+        {
+            btn_jogar_2.Enabled = false;
+            btn_parar_2.Enabled = false;
+            btn_reiniciar.Enabled = true;
+
+
+            private void label2_Click(object sender, EventArgs e)
+        {
+            btn_jogar_1.Enabled = false;
+            btn_parar_1.Enabled = false;
+            btn_jogar_2.Enabled = false;
+            btn_parar_2.Enabled = false;
+            btn_jogar_3.Enabled = true;
+            btn_parar_3.Enabled = true;
             resultado();
+        }
+
+        private void Form_jogo_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
